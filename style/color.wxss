@@ -1,0 +1,26 @@
+/**
+*  color.wxss包含本程序主要的文本颜色，背景颜色
+*/
+
+/* 背景颜色 */
+.bg-gray {
+	background-color: #eeeeee;
+	/* background-color: linear-gradient(-20deg, #b721ff 0%, #21d4fd 100%); */
+}
+
+/* 字体颜色 */
+.text-black {
+	color: #181818;
+}
+
+.text-red {
+	color: #f00;
+}
+
+.text-orange {
+	color: orange;
+}
+
+.text-gray {
+	color: #aaaaaa;
+}

@@ -1,0 +1,89 @@
+<!-- 若是没有登录就显示登录界面 -->
+<block wx:if="{{!login}}">
+	<!-- logo -->
+	<view class="hmly-logo" hover-class="none" hover-stop-propagation="false">
+		<image class="hmly-logo-img" src="/image/cover.jpg" mode="widthFix" lazy-load="false"></image>
+	</view>
+	<!-- 登录按钮 -->
+	<view class="hmly-login-button" hover-class="none" hover-stop-propagation="false">
+		<view class="hmly-wechat-login">
+			<button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
+				<text class="icon-message"></text> 微信登录
+			</button>
+		</view>
+		<view class="hmly-phone-login">
+			<button>手机号登录</button>
+		</view>
+	</view>
+</block>
+<block wx:else>
+	<!-- 搜索框 -->
+	<search></search>
+	<!-- 功能栏 -->
+	<view class="hmly-title-bar">
+		<view class="hmly-item-title {{index == currentIndex ? 'hmly-active' : ' '}}" data-index="{{index}}"
+			bindtap="checkItem" wx:for="{{content}}" wx:key="index">
+			{{item.text}}
+		</view>
+	</view>
+
+	<swiper class="hmly-swiper-box" style="min-height:{{height}}px" duration="300" current="{{currentIndex}}"
+		bindchange="changeTab">
+		<swiper-item class="hmly-swiper-box-item">
+			<block>
+				<view class="hmly-no-content">
+					<view class="hmly-performance-content" wx:for="{{performance}}" wx:key="index">
+						<view class="hmly-performance-index">{{index+1}}</view>
+						<view class="hmly-performance-info">
+							<view class="hmly-performance-info-top">
+								<view style="font-size:33rpx">{{item.name}}</view>
+								<view style="color:#aaaaaa">{{item.year}}</view>
+							</view>
+							<view class="hmly-performance-info-bottom">
+								<view><text class="icon-video"></text>{{item.count}}</view>
+								<view style="margin-left:20rpx"><text class="icon-time"></text>{{item.time}}</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</block>
+		</swiper-item>
+
+		<swiper-item>
+			<block>
+				<view class="hmly-no-content">
+					<text class="icon-empty text-gray" style="font-size:400rpx"></text>
+					<view class="hmly-but-box">
+						<text style="font-size:30rpx" class="text-gray">还没有预约剧本</text>
+						<button class="hmly-but" bindtap="toPlay">立即预约</button>
+					</view>
+				</view>
+			</block>
+		</swiper-item>
+		<!-- 我想玩的本 -->
+		<swiper-item>
+			<block>
+				<view class="hmly-no-content">
+					<text class="icon-empty text-gray" style="font-size:400rpx"></text>
+					<view class="hmly-but-box">
+						<text style="font-size:30rpx" class="text-gray">猜不到狼人的喜好。。。</text>
+						<button class="hmly-but">小冥推荐</button>
+					</view>
+				</view>
+			</block>
+		</swiper-item>
+
+		<!-- 我玩过的本 -->
+		<swiper-item>
+			<block>
+				<view class="hmly-no-content">
+					<text class="icon-empty text-gray" style="font-size:400rpx"></text>
+					<view class="hmly-but-box">
+						<text style="font-size:30rpx" class="text-gray">还没有玩过剧本</text>
+						<button class="hmly-but">等你探案</button>
+					</view>
+				</view>
+			</block>
+		</swiper-item>
+	</swiper>
+</block>

@@ -1,0 +1,18 @@
+<!--components/location/location.wxml-->
+  <view class="hmly-body" style="height:{{phoneHeight}}px">
+		<view class="hmly-top-bar">
+			<view class="hmly-user-img"  bindtap="location">
+				<view class="hmly-avatar-nickname">
+					<view class="hmly-avatar">
+						<image class="hmly-avatar-img" src="/image/cover.jpg"></image>
+					</view>
+					<view class="hmly-nickname">
+						<text class="#">巫冥剧本推理探案馆</text>
+					</view>
+					<view class="hmly-kefu"><text class="icon-search"></text>探案迷址</view>
+				</view>
+      </view>
+    </view>
+  </view>
+
+

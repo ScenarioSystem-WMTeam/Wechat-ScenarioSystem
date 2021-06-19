@@ -1,0 +1,123 @@
+<!-- pages/user/user.wxml -->
+<!-- <location></location> -->
+<block wx:if="{{!login}}">
+	<!-- logo -->
+	<view class="hmly-logo">
+		<image class="hmly-logo-img" src="/image/cover.jpg" mode="widthFix"></image>
+	</view>
+	<!-- 登录按钮 -->
+	<view class="hmly-login-button">
+		<!-- 在本小程序中只实现了微信登录 -->
+		<view class="hmly-wechat-login">
+			<button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
+				<text class="icon-message"></text> 微信登录
+			</button>
+		</view>
+		<view class="hmly-phone-login" bindtap="phoneLogin">
+			<button>手机号登录</button>
+		</view>
+	</view>
+</block>
+<!-- 已经登录显示界面 -->
+<block wx:else>
+	<view class="hmly-body" style="height:{{phoneHeight}}px">
+		<!-- 头像昵称签到部分 -->
+		<view class="hmly-top-bar">
+			<!-- 头像昵称 -->
+			<view class="hmly-user-img">
+				<view class="hmly-avatar-nickname">
+					<view class="hmly-avatar">
+						<image class="hmly-avatar-img" src="{{avatarUrl}}"></image>
+					</view>
+					<view class="hmly-nickname">
+						<text class="#">{{nickName}}</text>
+						<!-- vip勋章 -->
+						<text class="icon-vip" style="margin-left:30rpx"></text>
+					</view>
+				</view>
+				<view class="hmly-kefu"><text class="icon-service"></text>联系小冥</view>
+			</view>
+
+			<!-- 宫格导航 -->
+		<view class="hmly-nav">
+			<block>
+				<view class="hmly-nav-item" bindtap="{{item.events}}" wx:for="{{navList}}" wx:key="index">
+					<image class="hmly-nav-icon" src="{{item.icon}}" mode="widthFix" lazy-load="false"></image>
+					<text class="hmly-nav-text">{{item.text}}</text>
+				</view>
+			</block>
+		</view>
+		<!-- 选项卡部分 -->
+			<!-- 选项卡item -->
+			<view class="hmly-choice-item">
+				<!-- 意见反馈需要使用button的open-type属性 此处没有设置-->
+				<view class="">
+					<text class="icon-write text-black"></text>
+					<text style="margin-left:20rpx">签到加血</text>
+				</view>
+				<text class="icon-right text-black"></text>
+			</view>
+			<view class="hmly-choice-item">
+				<!-- 意见反馈需要使用button的open-type属性 此处没有设置-->
+				<view class="">
+					<text class="icon-write text-black"></text>
+					<text style="margin-left:20rpx">成为会员</text>
+				</view>
+				<text class="icon-right text-black"></text>
+			</view>
+
+			<view class="hmly-choice-item" bindtap="openSwitch">
+				<view class="">
+					<text class="icon-time text-black"></text>
+					<text style="margin-left:20rpx">个人状态</text>
+				</view>
+				<text class="icon-right text-black"></text>
+			</view>
+			<view class="hmly-choice-item">
+				<view class="">
+					<text class="icon-tip text-black"></text>
+					<text style="margin-left:20rpx">狼人模式</text>
+				</view>
+				<switch></switch>
+			</view>
+			<view class="hmly-choice-item">
+				<!-- 意见反馈需要使用button的open-type属性 此处没有设置-->
+				<view class="">
+					<text class="icon-write text-black"></text>
+					<text style="margin-left:20rpx">意见反馈</text>
+				</view>
+				<text class="icon-right text-black"></text>
+			</view>
+
+			<view class="hmly-choice-item">
+				<!-- 意见反馈需要使用button的open-type属性 此处没有设置-->
+				<view class="">
+					<text class="icon-write text-black"></text>
+					<text style="margin-left:20rpx">商家入驻</text>
+				</view>
+				<text class="icon-right text-black"></text>
+			</view>
+
+			<view class="hmly-choice-item" bindtap="gotoLogin">
+				<view class="">
+					<text class="icon-changeCount text-black"></text>
+					<text style="margin-left:20rpx">切换账号</text>
+				</view>
+				<text class="icon-right text-black"></text>
+			</view>
+		</view>
+	</view>
+</block>
+
+<block wx:if="{{show}}">
+	<view class="hmly-switch">
+		<scroll-view class="hmly-scroll-wrapper" scroll-y scroll-with-animation="true" catchtouchmove="preventTouchMove">
+			<view class="hmly-switch-item" wx:for="{{timeout}}" wx:key="{{index}}" bindtap="chooseTimeOut" data-activeIndex="{{index}}">
+				<view>{{item.text}}</view>
+				<view class="hmly-active" wx:if="{{index == activeIndex}}"></view>
+			</view>
+		</scroll-view>
+		<view class="hmly-close" bindtap="close">关闭</view>
+	</view>
+	<view class="hmly-cover"></view>
+</block>

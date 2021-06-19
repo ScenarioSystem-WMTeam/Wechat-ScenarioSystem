@@ -1,0 +1,6 @@
+{
+	"usingComponents": {
+		"search": "/components/search/search",
+		"location":"/components/location/location"
+	}
+}
