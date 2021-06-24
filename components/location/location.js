@@ -20,7 +20,7 @@ Component({
   methods: {
     location(){
       let plugin = requirePlugin('routePlan')
-      let key = '5MABZ-ZIV6J-CPJFU-KMYWB-QZCF6-7TB4H'
+      let key = '您的密钥'
       let referer = '巫冥探案推理位置服务'
       let endPoint = JSON.stringify({ 
           'name': '巫冥探案馆(天府广场店)',
